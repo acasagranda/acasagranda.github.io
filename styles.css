@@ -1,0 +1,324 @@
+/* Responsive */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    text-align: center;
+}
+table,th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+#stat-table {
+    height: 100%;
+}
+#stat-table, th, td {
+    font-size: 1.5vw;
+    padding: .7vw;
+}
+.cell .content {
+    aspect-ratio: 1 / 1;
+  }
+.cell {
+    font-family: monaco, Consolas, Lucida Console, monospace;
+    text-align: center;
+}
+.title {
+    text-align: center;
+    font-size: 3vw;
+}
+.navbar {
+    text-align: center;
+    background-color: lightgreen;
+}
+.nav-item {
+    display: inline-block;
+    width: 15%;
+    font-size: 1.4vw;
+}
+.nav-item:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+.nav-item2 {
+    display: inline-block;
+    width: 30%;
+    font-size: 1.4vw;
+}
+.nav-item2:hover {
+    cursor: pointer;
+}
+
+.nav-bottom {
+    display: inline-block;
+    width: 12%;
+    font-size: 1.4vw;
+}
+.nav-bottom:hover {
+    cursor: pointer;
+}
+.nav-bottom-name {
+    display: inline-block;
+    width: 12%;
+    font-size: 1.4vw;
+}
+#bottom{
+    margin-top:70px;
+}
+#grid-div {
+    text-align: center;
+    width: 80%;
+    height: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#lost {
+    text-align: left;
+    font-style: italic;
+    font-size: 1.2vw;
+    margin-left: 1vw;
+}
+#puzzle-div2 {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#info {
+  width: 20%;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 5%;
+  font-size: 1.5vw;
+}
+#xbutton, #obutton {
+    width: 4.2vw;
+    margin: 10%;
+    height: 1.8vw;
+    font-size: 1vw;
+} 
+#button-div {
+    text-align: center;
+}
+#xo {
+    border: 2px solid black;
+}
+.normal {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width:9vw;
+    height:1.5vw;
+    font-size: .9vw;
+}
+#stat-table-div {
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+.log {
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: yellow;
+}
+.login {
+    margin: 20px;
+    text-align: center;
+}
+.form-div {
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.form-line {
+    display: flex;
+    margin-left: 45%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#intro-div {
+  display: flex;
+  justify-content: space-around;
+}
+#pic {
+    margin:5%;
+    width:30%;
+}
+#puzzle-div {
+    display: flex;
+}
+#puzzle-info {
+    margin: 5%;
+    width:80%;
+}
+.subtitle {
+    font-size: 1.8vw;
+}
+.directions {
+    font-size: 1.4vw;
+}
+#tutorial-div {
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#back-button-div {
+    display: block;
+}
+#back-button-div2 {
+    display: none;
+}
+#restart-button-div {
+    display: block;
+}
+#restart-button-div2 {
+    display: none;
+}
+.body {
+    font-size: 2vw;
+}
+input {
+  width: 15vw;
+  height: 2.5vw;
+  font-size:1vw;
+}
+#tutorial-video {
+    width: 75%;
+}
+#tutorial-div{
+    border: 2px solid black;
+    margin: auto;
+    width: 90%;
+}
+
+@media (max-width: 600px) {
+
+    #puzzle-div2 {
+    display: block;
+    }
+    #restart-button-div2 {
+        display: block;
+        text-align: center;
+        margin: -42px;
+    }
+    #restart-button-div {
+        display: none;
+    }
+    #back-button-div2 {
+        display: block;
+        text-align: center;
+        margin: -14px;
+    }
+    #back-button-div {
+        display: none;
+    }
+    #lost{
+        font-size: 3.2vw;
+    }
+    .nav-item {
+        font-size: 4vw;
+        width:19%;
+    }
+    .nav-item2 {
+        font-size: 3vw;
+    }
+    .title {
+        font-size: 10vw;
+    }
+    #intro-div {
+        display: block;
+    }
+    #pic {
+        width:75%;
+        margin-left: auto;
+    }
+    #puzzle-div {
+        display: block;
+    }
+    #puzzle-info {
+        width:90%;
+    }
+    .subtitle {
+        font-size: 5vw;
+    }
+    .directions {
+        font-size: 4.2vw;
+    }
+    .nav-bottom-name {
+        width: 90%;
+        font-size: 6vw;
+    }
+    .nav-bottom {
+        font-size: 3.8vw;
+    }
+    .navbar {
+        margin-left: -15%;
+    }
+    #info {
+        margin:auto;
+        width: 70%;
+        font-size: 6vw;
+    }
+    #xbutton, #obutton {
+        width: 20vw;
+        height: 6.6vw;
+        font-size: 4vw;
+    } 
+    #grid-div {
+        width: 100%;
+        height: 100%;
+        margin-top: 10%;
+        margin-bottom: 2%;
+    }
+    .inside-cell {
+        font-size: 2em;
+        padding: .6em;
+    }
+    table {
+        border: 2px;
+    }
+    .normal {
+        width: 33vw;
+        height: 11.5vw;
+        font-size: 3vw;
+    }
+    .log {
+        font-size: 1.7em;
+        margin: 10px;
+    }
+    input {
+        width: 32vw;
+        height: 5.5vw;
+        font-size: 4vw;
+    }
+    .form-div {
+        font-size: 2em;
+    }
+    .login{
+        margin:9px;
+    }
+    #stat-table, th, td{
+        font-size: 4.5vw;
+        border-collapse: separate;
+    }
+    #bottom{
+        margin-top:16px;
+    }
+    #puzzle-table, th, tr{
+        border: 2px solid black;
+    }
+    #tutorial-video{
+        width: 100%;
+    }
+}

@@ -1,24 +1,77 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+        <title>Marupeke</title>
+        <link href="styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="index.js"></script>
     </head>
     <body>
-	<p class="main_title">Discover hidden places in the world around you</p>
-	<br>
-	<a href="https://bc3fd5387e734bfdbb83a04e3a9b86f8.cc-propeller.cloud/#">Download Excursion (Coming soon!)</a>
-    
-    <p> <video src="/resources/videos/excursion.mp4" alt="Water flowing over rocks" controls  /></video>   </p>
-    <p class="middle">Your personal travel guide</p>
-    <p class="caption">Excursion remembers places you like, and recommends new points of interest around you.</p>
-    <p><img src="/resources/images/camp.jpg" alt="Tents in the evening"  />    </p>
-    <p><img src="/resources/images/phone.png" alt="Cell phone icon"  />    </p>
-    <p class="middle">Coming Soon for iPhone and Android</p>
-    <a href="https://bc3fd5387e734bfdbb83a04e3a9b86f8.cc-propeller.cloud/#">Download Excursion (Coming soon!)</a>
-    <p class="end">&copy Excursion</p>
+        <div class = "title">
+            Marupeke
+        </div>
+        <nav class="nav">
+            <ul class="navbar">
+                <li class="nav-item">
+                    <div class="nav-link" id="home" >Home</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="tutorial">Tutorial</a>
+                </li>
+            </ul>
+        </nav> 
+        <div id="intro-div">
+            <div id="pic">
+                <img src="Puzzle_pic.png" style="width:75%;">
+            </div>
+            <div id="puzzle-info">
+                <p class="subtitle">A Japanese-style puzzle that strengthens observational and problem solving skills.</p>
+                <p class="subtitle">Each puzzle has a unique solution which does not require any guess work to solve.</p>
+                <br>
+                <div class="directions">DIRECTIONS:</div>
+                <div class="directions"> Fill all white cells in the grid with either an X or an O so that there are never 3 consecutive X's or O's in any row, column or diagonal.</div>
+            </div>
+        </div>
+        
+        <div id="tutorial-div">
+            <video controls id="tutorial-video">
+                <source src="tutorial.mp4" type="video/mp4" />
+            </video>
+        </div>
 
+        <div id="puzzle-div">
+        </div>
 
-</body>
+        <nav class="nav" id="bottom">
+            <ul class="navbar">
+                <li class="nav-bottom-name">
+                    <div class="size-link" >Begin A Puzzle:</div>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=4>4 x 4</div>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=5>5 x 5</a>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=6>6 x 6</div>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=7>7 x 7</div>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=8>8 x 8</a>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=9>9 x 9</div>
+                </li>
+                <li class="nav-bottom">
+                    <div class="size-link" data-size=10>10 x 10</div>
+                </li>
+            </ul>
+        </nav>
+        <div id="lost">
+            Any progress on this puzzle will be lost if you start another puzzle.
+        </div>
+    </body>
 </html>
