@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     // initially set up index page to display home only
-    document.querySelector('#tutorial-div').style.display = 'none';
     document.querySelector('#puzzle-div').style.display = 'none';
     const lost = document.querySelector('#lost');
     if (lost) {
@@ -10,22 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // set up home page
     document.querySelector('#home').addEventListener('click', function(){
         document.querySelector('#intro-div').style.removeProperty("display");
-        document.querySelector('#tutorial-div').style.display = 'none';
         document.querySelector('#puzzle-div').style.display = 'none';
         if (lost) {
         lost.style.display = 'none';
     }
     });
 
-    // set up tutorial page
-    document.querySelector('#tutorial').addEventListener('click', function(){
-        document.querySelector('#intro-div').style.display = 'none';
-        document.querySelector('#tutorial-div').style.display = 'block';
-        document.querySelector('#puzzle-div').style.display = 'none';
-        if (lost) {
-            lost.style.display = 'none';
-        }
-    });
     
     // links to different sized puzzles
     document.querySelectorAll('.size-link').forEach(div => {
@@ -46,7 +35,6 @@ const deltas = [[-1,-1,-2,-2],[-1,0,-2,0],[-1,1,-2,2],[0,1,0,2],[1,1,2,2],[1,0,2
 // set up puzzle page
 function puzzle(size) {
     document.querySelector('#intro-div').style.display = 'none';
-    document.querySelector('#tutorial-div').style.display = 'none';
     document.querySelector('#lost').style.display = 'block';
     moves = [];
     move_set = new Set();
