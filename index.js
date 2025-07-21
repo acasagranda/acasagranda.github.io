@@ -248,16 +248,18 @@ function make_mark(row,col,already_in_move_set=false) {
             puzzle_table.style.backgroundColor = "lightgreen";
             const puzzle_div = document.querySelector('#puzzle-div');    
             const con = document.createElement('p');
-            con.style.fontSize = "20em";
+            con.style.fontSize = "8em";
             con.innerHTML = "CONGRATULATIONS!";
             const solved = document.createElement('p');
-            solved.style.fontSize = "10em";
+            solved.style.fontSize = "3em";
             solved.innerHTML = "This puzzle is solved.";
             restart_buttons = document.querySelectorAll('.restart');
             restart_buttons.forEach(restart => {
                 restart.innerHTML = "New Puzzle";
             });
+            const br1 = document.createElement('br');
             puzzle_div.appendChild(con);
+            puzzle_div.appendChild(br1);
             puzzle_div.appendChild(solved);
         }, 100)  
     }
