@@ -246,7 +246,7 @@ function make_mark(row,col,already_in_move_set=false) {
         setTimeout(() => {
             const puzzle_table = document.querySelector('#puzzle-table');
             puzzle_table.style.backgroundColor = "lightgreen";
-            const info_div = document.querySelector('#info');
+            const puzzle_div = document.querySelector('#puzzle-div');    
             const con = document.createElement('h1');
             con.innerHTML = "CONGRATULATIONS!";
             const solved = document.createElement('h3');
@@ -255,8 +255,8 @@ function make_mark(row,col,already_in_move_set=false) {
             restart_buttons.forEach(restart => {
                 restart.innerHTML = "New Puzzle";
             });
-            info_div.appendChild(con);
-            info_div.appendChild(solved);
+            puzzle_div.appendChild(con);
+            puzzle_div.appendChild(solved);
         }, 100)  
     }
 }
