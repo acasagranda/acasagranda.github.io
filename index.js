@@ -29,11 +29,14 @@ let moves = [];
 let move_set = new Set();
 let red_set = new Set();
 let start_set = [];
+let start_set_marks = [];
 let grid_size = 0;
+let startup;
 const deltas = [[-1,-1,-2,-2],[-1,0,-2,0],[-1,1,-2,2],[0,1,0,2],[1,1,2,2],[1,0,2,0],[1,-1,2,-2],[0,-1,0,-2],[-1,0,1,0],[0,-1,0,1],[-1,-1,1,1],[-1,1,1,-1]];
 
 // set up puzzle page
 function puzzle(size) {
+    start_set = [];
     document.querySelector('#intro-div').style.display = 'none';
     document.querySelector('#lost').style.display = 'block';
     moves = [];
@@ -85,7 +88,7 @@ function puzzle(size) {
     restart_button_div.appendChild(restart_button);
     restart_button.innerHTML = "Restart this puzzle";
     restart_button.addEventListener("click", function() {
-        puzzle(size);
+        setup_grid(true);
         });
     info_div.appendChild(back_button_div);
     info_div.appendChild(restart_button_div);
@@ -141,33 +144,23 @@ function puzzle(size) {
     restart_button_div2.appendChild(restart_button2);
     restart_button2.innerHTML = "Restart this puzzle";
     restart_button2.addEventListener("click", function() {
-        puzzle(size);
+        setup_grid(true);
         });
     puzzle_div2.appendChild(grid_div);
     puzzle_div2.appendChild(back_button_div2);
     puzzle_div2.appendChild(restart_button_div2);
     start_set = [];
+    start_set_marks = [];
 
     // get starting setup for next puzzle
     fetch(`https://acasagranda.pythonanywhere.com/makepuzzle/${size}`)
     .then(response => response.json())
     .then(start => {
         start.forEach (cell => {   
-            start_set.push(cell.row + '*' + cell.col)
-            let current_cells = document.querySelector(`[data-row="${cell.row}"][data-col="${cell.col}"]`);
-            const inside_cell = current_cells.children[0];
-            if (cell.mark === 'B') {
-                current_cells.style.backgroundColor = "black";
-                inside_cell.innerHTML = "N";
-            } else {
-                inside_cell.innerHTML = cell.mark;
-            }
-            current_cells.style.opacity = '1';
-            current_cells.addEventListener('mouseenter', () => {
-                current_cells.style.cursor = 'not-allowed';
-                })
-        })
-        
+            start_set.push(cell.row + '*' + cell.col);
+            start_set_marks.push(cell.row + '*' + cell.col + '*' + cell.mark);
+        });
+        setup_grid(false);       
         for (let row=0; row<size; row++) {
             r = row.toString();
             for (let col=0; col<size; col++) {
@@ -188,6 +181,43 @@ function puzzle(size) {
     });
     
 }
+
+// set up grid marks
+function setup_grid(restart) {
+    if (restart === true){
+        moves = [];
+        move_set = new Set();
+        red_set = new Set();
+        for (let row=0; row<grid_size; row++) {
+            let r = row.toString();
+            for (let col=0; col<grid_size; col++) {
+                let c = col.toString();
+                let curr = document.querySelectorAll(`[data-row="${r}"][data-col="${c}"]`);
+                let inside_curr = curr[0].children[0];
+                inside_curr.innerHTML = "N";
+                curr[0].style.opacity = '0';
+                curr[0].style.color = "black";
+                curr[0].style.backgroundColor = "white";
+            }
+        }
+    }
+    start_set_marks.forEach (cell => {   
+        const rcm = cell.split("*");
+        const curr = document.querySelectorAll(`[data-row="${rcm[0]}"][data-col="${rcm[1]}"]`);
+        const inside_cell = curr[0].children[0];
+        if (rcm[2] === 'B') {
+            curr[0].style.backgroundColor = "black";
+            inside_cell.innerHTML = "N";
+        } else {
+            inside_cell.innerHTML = rcm[2];
+        }
+        curr[0].style.opacity = '1';
+        curr[0].addEventListener('mouseenter', () => {
+            curr[0].style.cursor = 'not-allowed';
+            })
+    })
+    }
+
 
 // change mark based on user's selection
 function change_button(green) {
@@ -246,8 +276,8 @@ function make_mark(row,col,already_in_move_set=false) {
         setTimeout(() => {
             const puzzle_table = document.querySelector('#puzzle-table');
             puzzle_table.style.backgroundColor = "lightgreen";
-            const puzzle_div = document.querySelector('#puzzle-div'); 
-            const div1 = document.createElement('div');
+            const puzzle_div = document.querySelector('#puzzle-div2');  
+            const div1 = document.createElement('div');  
             const con = document.createElement('p');
             con.style.fontSize = "1.8em";
             con.style.textAlign = "center";
@@ -259,6 +289,10 @@ function make_mark(row,col,already_in_move_set=false) {
             restart_buttons = document.querySelectorAll('.restart');
             restart_buttons.forEach(restart => {
                 restart.innerHTML = "New Puzzle";
+                restart.removeEventListener('click', setup_grid);
+                restart.addEventListener("click", function() {
+                    puzzle(grid_size);
+                });
             });
             const break1 = document.createElement('br');
             div1.appendChild(con);
