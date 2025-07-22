@@ -76,11 +76,9 @@ function puzzle(size) {
     back_button_div.setAttribute('id','back-button-div');
     const back_button = document.createElement('button');
     back_button_div.appendChild(back_button);
-    back_button.className = "normal";
+    back_button.className = "back normal";
     back_button.innerHTML = "Go back a move";
-    back_button.addEventListener("click", function() {
-        back_one_move();
-        });
+    back_button.addEventListener("click", back_one_move);
     const restart_button_div = document.createElement('div');
     restart_button_div.setAttribute('id', 'restart-button-div');
     const restart_button = document.createElement('button');
@@ -132,11 +130,9 @@ function puzzle(size) {
     back_button_div2.setAttribute('id','back-button-div2');
     const back_button2 = document.createElement('button');
     back_button_div2.appendChild(back_button2);
-    back_button2.className = "normal";
+    back_button2.className = "back normal";
     back_button2.innerHTML = "Go back a move";
-    back_button2.addEventListener("click", function() {
-        back_one_move();
-        });
+    back_button2.addEventListener("click", back_one_move);
     const restart_button_div2 = document.createElement('div');
     restart_button_div2.setAttribute('id', 'restart-button-div2');
     const restart_button2 = document.createElement('button');
@@ -263,17 +259,6 @@ function make_mark(row,col,already_in_move_set=false) {
 
     // check for win
     if ((red_set.size === 0) && (move_set.size + start_set.length === grid_size * grid_size)){
-        fetch('/wins', {
-            method: 'PUT',
-            body: JSON.stringify({
-                size: grid_size,
-            }),
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        setTimeout(() => {
             const puzzle_table = document.querySelector('#puzzle-table');
             puzzle_table.style.backgroundColor = "lightgreen";
             const puzzle_div = document.querySelector('#puzzle-div2');  
@@ -286,6 +271,10 @@ function make_mark(row,col,already_in_move_set=false) {
             solved.style.fontSize = "1em";
             solved.style.textAlign = "center";
             solved.innerHTML = "This puzzle is solved.";
+            back_buttons = document.querySelectorAll('.back');
+            back_buttons.forEach(back => {
+                back.removeEventListener('click', back_one_move);
+            });
             restart_buttons = document.querySelectorAll('.restart');
             restart_buttons.forEach(restart => {
                 restart.innerHTML = "New Puzzle";
@@ -299,7 +288,6 @@ function make_mark(row,col,already_in_move_set=false) {
             div1.appendChild(break1);
             div1.appendChild(solved);
             puzzle_div.appendChild(div1);
-        }, 100)  
     }
 }
 
@@ -377,3 +365,4 @@ function back_one_move() {
         }
     }
 }
+
