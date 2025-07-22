@@ -246,21 +246,25 @@ function make_mark(row,col,already_in_move_set=false) {
         setTimeout(() => {
             const puzzle_table = document.querySelector('#puzzle-table');
             puzzle_table.style.backgroundColor = "lightgreen";
-            const puzzle_div = document.querySelector('#puzzle-div');    
+            const puzzle_div = document.querySelector('#puzzle-div'); 
+            const div1 = document.createElement('div');
             const con = document.createElement('p');
-            con.style.fontSize = "8em";
+            con.style.fontSize = "1.8em";
+            con.style.textAlign = "center";
             con.innerHTML = "CONGRATULATIONS!";
             const solved = document.createElement('p');
-            solved.style.fontSize = "3em";
+            solved.style.fontSize = "1em";
+            solved.style.textAlign = "center";
             solved.innerHTML = "This puzzle is solved.";
             restart_buttons = document.querySelectorAll('.restart');
             restart_buttons.forEach(restart => {
                 restart.innerHTML = "New Puzzle";
             });
-            const br1 = document.createElement('br');
-            puzzle_div.appendChild(con);
-            puzzle_div.appendChild(br1);
-            puzzle_div.appendChild(solved);
+            const break1 = document.createElement('br');
+            div1.appendChild(con);
+            div1.appendChild(break1);
+            div1.appendChild(solved);
+            puzzle_div.appendChild(div1);
         }, 100)  
     }
 }
