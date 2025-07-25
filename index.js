@@ -193,7 +193,6 @@ function setup_grid(restart) {
                 inside_curr.innerHTML = "N";
                 curr[0].style.opacity = '0';
                 curr[0].style.color = "black";
-                curr[0].style.backgroundColor = "white";
             }
         }
     }
