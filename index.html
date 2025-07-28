@@ -10,12 +10,36 @@
         <div class = "title">
             Marupeke
         </div>
-        <nav class="nav">
+        <nav class="nav" id="nav-loggedout">
             <ul class="navbar">
                 <li class="nav-item">
                     <div class="nav-link" id="home" >Home</div>
                 </li>
-               
+                <li class="nav-item">
+                    <div class="nav-link" id="stats" >Stats</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="space" ></div>
+                </li>
+                <li class="nav-item2">
+                    <div class="nav-block" id="login">Log In </div><div class="nav-block">&nbsp; or &nbsp;</div><div id="signup" class="nav-block" class="nav-block"> Sign Up </div><div class="nav-block">&nbsp; to save scores</div> </div>
+                </li>
+            </ul>
+        </nav> 
+        <nav class="nav" id="nav-loggedin">
+            <ul class="navbar">
+                <li class="nav-item">
+                    <div class="nav-link" id="home2" >Home</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="stats2" >Stats</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="space2" ></div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="logout" >Log Out</div>
+                </li>
             </ul>
         </nav> 
         <div id="intro-div">
@@ -23,16 +47,67 @@
                 <img src="Puzzle_pic.png" style="width:75%;">
             </div>
             <div id="puzzle-info">
-                <p class="subtitle">A Japanese-style puzzle that strengthens perseverance and problem solving skills.</p>
-                <p class="subtitle">Each puzzle has a unique solution which does not require any guess work to solve.</p>
+                <p class="subtitle">A Japanese-style logic puzzle that strengthens perseverance and develops problem solving skills.</p>
+                <p class="subtitle">No guess work is needed to solve and each puzzle has a unique solution.</p>
                 <br>
                 <div class="directions">DIRECTIONS:</div>
                 <div class="directions"> Fill all white cells in the grid with either an X or an O so that there are never 3 consecutive X's or O's in any row, column or diagonal.</div>
             </div>
         </div>
         
+        <div id="stats-loggedin-div">
+            <br>
+            <div class="title">
+                Puzzle Stats
+            </div>
+            <br>
+            <div id="stattable-loggedin">   
+            </div>
+        </div>
+    
 
+        <div id="stats-loggedout-div">
+            <br>
+            <div class="title">
+                Puzzle Stats
+            </div>
+            <br>
+            <div id="stattable-loggedout">   
+            </div>
+        </div>
+   
+        
         <div id="puzzle-div">
+        </div>
+
+        <div id="login-div" class="center">
+            <div id="login-message" style="color: red;"></div>
+            <br>
+            <div class="subtitle">Log In here to keep track of your scores.</div>
+            <br>
+            <div>username: <input id="login-username"> </div>
+            <br>
+            <div>password: <input id="login-password"> </div>
+            <br>
+            <button id="login-button">Log In</button>
+            <br>
+            <div class="smaller">If you haven't signed up, <span class="nav-block" id="signup2">Sign up </span> here.</div>
+        </div>
+
+        <div id="signup-div" class="center">
+            <div id="signup-message" style="color: red;"></div>
+            <br>
+            <div class="subtitle">Sign up here to keep track of your scores.</div>
+            <br>
+            <div>username: <input id="signup-username"> </div>
+            <br>
+            <div>password: <input id="signup-password"> </div>
+            <br>
+            <div>confirm password: <input id="signup-password2"> </div>
+            <br>
+            <button id="signup-button">Sign me up!</button>
+            <br>
+            <div class="smaller">If you are already signed up, <span class="nav-block" id="login2">Log In </span> here.</div>
         </div>
 
         <nav class="nav" id="bottom">
