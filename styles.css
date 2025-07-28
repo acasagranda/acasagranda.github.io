@@ -1,4 +1,3 @@
-/* Responsive */
 html, body {
   height: 100%;
   margin: 0;
@@ -53,14 +52,55 @@ table,th, td {
     width: 30%;
     font-size: 1.4vw;
 }
-.nav-item2:hover {
+.nav-block {
+    display: inline-block;
+}
+.center {
+    text-align: center;
+}
+#login {
+    color:darkgreen;
+}
+#login:hover {
     cursor: pointer;
+}
+#signup {
+    color:darkgreen;
+}
+#signup:hover {
+    cursor: pointer;
+}
+#login2 {
+    color:red;
+}
+#login2:hover {
+    cursor: pointer;
+}
+#signup2 {
+    color:red;
+}
+#signup2:hover {
+    cursor: pointer;
+}
+#login-button {
+    background-color: lightgreen;
+    font-size: medium;
+}
+#signup-button {
+    background-color: lightgreen;
+    font-size: medium;
+}
+.nav-link {
+    color:darkgreen;
 }
 
 .nav-bottom {
     display: inline-block;
     width: 12%;
     font-size: 1.4vw;
+}
+.smaller {
+    font-size: 1vw;
 }
 .nav-bottom:hover {
     cursor: pointer;
@@ -261,6 +301,9 @@ input {
     }
     .nav-bottom {
         font-size: 3.8vw;
+    }
+    .smaller {
+        font-size: 3.2vw;
     }
     .navbar {
         margin-left: -15%;
