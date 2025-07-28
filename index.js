@@ -1,20 +1,148 @@
 document.addEventListener('DOMContentLoaded', function() {
     // initially set up index page to display home only
     document.querySelector('#puzzle-div').style.display = 'none';
+    document.querySelector('#login-div').style.display = 'none';
+    document.querySelector('#signup-div').style.display = 'none';
+    document.querySelector('#stats-loggedin-div').style.display = 'none';
+    document.querySelector('#stats-loggedout-div').style.display = 'none';
+    document.querySelector('#nav-loggedout').style.display = 'block';
+    document.querySelector('#nav-loggedin').style.display = 'none';
     const lost = document.querySelector('#lost');
     if (lost) {
         lost.style.display = 'none';
     }
-
+    
     // set up home page
     document.querySelector('#home').addEventListener('click', function(){
         document.querySelector('#intro-div').style.removeProperty("display");
         document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'none';
+        document.querySelector('#signup-div').style.display = 'none';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        if (username === null){
+            document.querySelector('#nav-loggedout').style.display = 'block';
+            document.querySelector('#nav-loggedin').style.display = 'none';
+        } else {
+            document.querySelector('#nav-loggedout').style.display = 'none';
+            document.querySelector('#nav-loggedin').style.display = 'block';
+        }
+        
+        if (lost) {
+        lost.style.display = 'none';
+    }
+    });
+    document.querySelector('#home2').addEventListener('click', function(){
+        document.querySelector('#intro-div').style.removeProperty("display");
+        document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'none';
+        document.querySelector('#signup-div').style.display = 'none';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        if (username === null){
+            document.querySelector('#nav-loggedout').style.display = 'block';
+            document.querySelector('#nav-loggedin').style.display = 'none';
+        } else {
+            document.querySelector('#nav-loggedout').style.display = 'none';
+            document.querySelector('#nav-loggedin').style.display = 'block';
+        }
+        
         if (lost) {
         lost.style.display = 'none';
     }
     });
 
+
+    // set up signup page
+    document.querySelector('#signup').addEventListener('click', function(){
+        document.querySelector('#intro-div').style.display = 'none';
+        document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'none';
+        document.querySelector('#signup-div').style.display = 'block';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        document.querySelector('#nav-loggedout').style.display = 'block';
+        document.querySelector('#nav-loggedin').style.display = 'none';
+        
+        
+        if (lost) {
+        lost.style.display = 'none';
+    }
+    });
+    document.querySelector('#signup2').addEventListener('click', function(){
+        document.querySelector('#intro-div').style.display = 'none';
+        document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'none';
+        document.querySelector('#signup-div').style.display = 'block';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        document.querySelector('#nav-loggedout').style.display = 'block';
+        document.querySelector('#nav-loggedin').style.display = 'none';
+        
+        
+        if (lost) {
+        lost.style.display = 'none';
+    }
+    });
+    
+
+    // set up login page
+    document.querySelector('#login').addEventListener('click', function(){
+        document.querySelector('#intro-div').style.display = 'none';
+        document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'block';
+        document.querySelector('#signup-div').style.display = 'none';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        document.querySelector('#nav-loggedout').style.display = 'block';
+        document.querySelector('#nav-loggedin').style.display = 'none';
+        
+        
+        if (lost) {
+        lost.style.display = 'none';
+    }
+    });
+    document.querySelector('#login2').addEventListener('click', function(){
+        document.querySelector('#intro-div').style.display = 'none';
+        document.querySelector('#puzzle-div').style.display = 'none';
+        document.querySelector('#login-div').style.display = 'block';
+        document.querySelector('#signup-div').style.display = 'none';
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+        document.querySelector('#nav-loggedout').style.display = 'block';
+        document.querySelector('#nav-loggedin').style.display = 'none';
+        
+        
+        if (lost) {
+        lost.style.display = 'none';
+    }
+    });
+
+
+    // set up stats page
+    document.querySelector('#stats').addEventListener('click', function(){
+        setup_stats()
+    });
+    // set up stats page
+    document.querySelector('#stats2').addEventListener('click', function(){
+        setup_stats()
+    });
+
+    // login, logout and setup buttons
+    let lsbutton = document.querySelector('#signup-button');
+    lsbutton.addEventListener("click", function() {
+        signup_button();
+        });
+    lsbutton = document.querySelector('#login-button');
+    lsbutton.addEventListener("click", function() {
+        login_button();
+        });
+    lsbutton = document.querySelector('#logout');
+    lsbutton.addEventListener("click", function() {
+        username = null;
+        const home = document.querySelector('#home');
+        home.click();
+        });
     
     // links to different sized puzzles
     document.querySelectorAll('.size-link').forEach(div => {
@@ -23,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
     });
 });
-
+let username = null;
 let mark = 'X';
 let moves = [];
 let move_set = new Set();
@@ -39,6 +167,11 @@ function puzzle(size) {
     start_set = [];
     document.querySelector('#intro-div').style.display = 'none';
     document.querySelector('#lost').style.display = 'block';
+    document.querySelector('#intro-div').style.display = 'none';
+    document.querySelector('#login-div').style.display = 'none';
+    document.querySelector('#signup-div').style.display = 'none';
+    document.querySelector('#stats-loggedin-div').style.display = 'none';
+    document.querySelector('#stats-loggedout-div').style.display = 'none';
     moves = [];
     move_set = new Set();
     red_set = new Set();
@@ -193,6 +326,7 @@ function setup_grid(restart) {
                 inside_curr.innerHTML = "N";
                 curr[0].style.opacity = '0';
                 curr[0].style.color = "black";
+                
             }
         }
     }
@@ -287,6 +421,22 @@ function make_mark(row,col,already_in_move_set=false) {
             div1.appendChild(break1);
             div1.appendChild(solved);
             puzzle_div.appendChild(div1);
+            if (username != null){
+                fetch('https://acasagranda.pythonanywhere.com/winnerpuzzle', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Important: tells the server you're sending JSON
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        gridsize: grid_size,
+                    }),
+                })
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result);
+                })
+            }
     }
 }
 
@@ -363,5 +513,157 @@ function back_one_move() {
             move_set.delete(move);
         }
     }
+}
+
+
+function setup_stats() {
+    document.querySelector('#intro-div').style.display = 'none';
+    document.querySelector('#login-div').style.display = 'none';
+    document.querySelector('#signup-div').style.display = 'none';
+    document.querySelector('#puzzle-div').style.display = 'none';
+    if (username === null){
+        document.querySelector('#stats-loggedin-div').style.display = 'none';
+        document.querySelector('#stats-loggedout-div').style.display = 'block';
+    } else {
+        document.querySelector('#stats-loggedin-div').style.display = 'block';
+        document.querySelector('#stats-loggedout-div').style.display = 'none';
+    }
+    if (lost) {
+        lost.style.display = 'none';
+    }
+    
+    let tablediv;
+    if (username === null){
+        tablediv = document.querySelector('#stattable-loggedout');
+    } else {
+        tablediv = document.querySelector('#stattable-loggedin'); 
+    }
+    tablediv.innerHTML = "";
+    const table = document.createElement('table');
+    tablediv.appendChild(table);
+    table.setAttribute('id','stat-table');
+    const tbody = document.createElement('tbody')
+    table.appendChild(tbody);
+    let row_part = document.createElement('tr');
+    let col_part = document.createElement('th');
+    col_part.textContent = "Grid Size";
+    row_part.appendChild(col_part);
+    if (username != null){
+        col_part = document.createElement('th');
+        col_part.textContent = "Puzzles Solved";
+        row_part.appendChild(col_part);
+    }
+    col_part = document.createElement('th');
+    col_part.textContent = "High Scores";
+    row_part.appendChild(col_part);
+    tbody.appendChild(row_part);
+    fetch(`https://acasagranda.pythonanywhere.com/stats`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Important: tells the server you're sending JSON
+        },
+        body: JSON.stringify({
+            username: username,
+        }),
+    })
+    .then(response => response.json())
+    .then(stats => {   
+        for (let row=4; row<11; row++){
+            let tablerow = document.createElement('tr');
+            let tablecol = document.createElement('td');
+            tablecol.textContent = row + " x " + row;
+            tablerow.appendChild(tablecol);
+            if (username != null){
+                tablecol = document.createElement('td');
+                tablecol.textContent = stats['number_solved'][row.toString()]
+                tablerow.appendChild(tablecol);
+            }
+            tablecol = document.createElement('td');
+            tablecol.textContent = stats['high_scorer'][row.toString()] + ": " + stats['high_scores'][row.toString()];
+            tablerow.appendChild(tablecol);
+            if (stats['high_scorer'][row.toString()] === username) {
+                tablecol.style.color = 'chartreuse';
+            } else {
+                tablecol.style.color = 'black';
+            }
+            tbody.appendChild(tablerow);
+        };
+    });  
+}
+
+function signup_button(){
+    const un = document.querySelector('#signup-username');
+    const message = document.querySelector('#signup-message');
+    if (!un.value){
+        message.innerHTML = "Please Enter a Username";
+        return
+    }
+    const pass1 = document.querySelector('#signup-password');
+    const pass2 = document.querySelector('#signup-password2');
+    if (pass1.value != pass2.value){
+        message.innerHTML = "Passwords don't match.";
+        return
+    }
+
+    fetch('https://acasagranda.pythonanywhere.com/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Important: tells the server you're sending JSON
+            },
+            body: JSON.stringify({
+                username: un.value,
+                password: pass1.value,
+            }),
+        })
+        .then(response => response.text())
+        .then(result => {
+            if (result === 'OK'){
+                username = un.value;
+                document.querySelector('#nav-loggedin').style.display = 'block';
+                document.querySelector('#nav-loggedout').style.display = 'none';
+                un.value = "";
+                pass1.value = "";
+                pass2.value = "";
+                message.innerHTML = "";
+                const home = document.querySelector('#home');
+                home.click();
+            } else {
+                message.innerHTML = result;
+                return
+            }
+        })
+}
+
+function login_button(){
+    const un = document.querySelector('#login-username');
+    const message = document.querySelector('#login-message');
+    const pass = document.querySelector('#login-password');
+
+    fetch('https://acasagranda.pythonanywhere.com/loginpuzzle', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Important: tells the server you're sending JSON
+            },
+            body: JSON.stringify({
+                username: un.value,
+                password: pass.value,
+            }),
+        })
+        .then(response => response.text())
+        .then(result => {
+            if (result === 'OK'){
+                username = un.value;
+                document.querySelector('#nav-loggedin').style.display = 'block';
+                document.querySelector('#nav-loggedout').style.display = 'none';
+                un.value = "";
+                pass.value = "";
+                message.innerHTML = "";
+                const home = document.querySelector('#home');
+                home.click();
+            } else {
+                message.innerHTML = result;
+                return
+            }
+        })
 }
 
