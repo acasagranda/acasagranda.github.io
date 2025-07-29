@@ -42,104 +42,106 @@
                 </li>
             </ul>
         </nav> 
-        <div id="intro-div">
-            <div id="pic">
-                <img src="Puzzle_pic.png" style="width:75%;">
+        <div class="main">
+            <div id="intro-div">
+                <div id="pic">
+                    <img src="Puzzle_pic.png" style="width:75%;">
+                </div>
+                <div id="puzzle-info">
+                    <p class="subtitle">A Japanese-style logic puzzle that strengthens perseverance and develops problem solving skills.</p>
+                    <p class="subtitle">No guess work is needed to solve and each puzzle has a unique solution.</p>
+                    <br>
+                    <div class="directions">DIRECTIONS:</div>
+                    <div class="directions"> Fill all white cells in the grid with either an X or an O so that there are never 3 consecutive X's or O's in any row, column or diagonal.</div>
+                </div>
             </div>
-            <div id="puzzle-info">
-                <p class="subtitle">A Japanese-style logic puzzle that strengthens perseverance and develops problem solving skills.</p>
-                <p class="subtitle">No guess work is needed to solve and each puzzle has a unique solution.</p>
+            
+            <div id="stats-loggedin-div">
                 <br>
-                <div class="directions">DIRECTIONS:</div>
-                <div class="directions"> Fill all white cells in the grid with either an X or an O so that there are never 3 consecutive X's or O's in any row, column or diagonal.</div>
+                <div class="title">
+                    Puzzle Stats
+                </div>
+                <br>
+                <div id="stattable-loggedin">   
+                </div>
             </div>
-        </div>
         
-        <div id="stats-loggedin-div">
-            <br>
-            <div class="title">
-                Puzzle Stats
-            </div>
-            <br>
-            <div id="stattable-loggedin">   
-            </div>
-        </div>
     
-
-        <div id="stats-loggedout-div">
-            <br>
-            <div class="title">
-                Puzzle Stats
+            <div id="stats-loggedout-div">
+                <br>
+                <div class="title">
+                    Puzzle Stats
+                </div>
+                <br>
+                <div id="stattable-loggedout">   
+                </div>
             </div>
-            <br>
-            <div id="stattable-loggedout">   
+       
+            
+            <div id="puzzle-div">
             </div>
-        </div>
-   
-        
-        <div id="puzzle-div">
-        </div>
-
-        <div id="login-div" class="center">
-            <div id="login-message" style="color: red;"></div>
-            <br>
-            <div class="subtitle">Log In here to keep track of your scores.</div>
-            <br>
-            <div>username: <input id="login-username"> </div>
-            <br>
-            <div>password: <input id="login-password"> </div>
-            <br>
-            <button id="login-button">Log In</button>
-            <br>
-            <div class="smaller">If you haven't signed up, <span class="nav-block" id="signup2">Sign up </span> here.</div>
-        </div>
-
-        <div id="signup-div" class="center">
-            <div id="signup-message" style="color: red;"></div>
-            <br>
-            <div class="subtitle">Sign up here to keep track of your scores.</div>
-            <br>
-            <div>username: <input id="signup-username"> </div>
-            <br>
-            <div>password: <input id="signup-password"> </div>
-            <br>
-            <div>confirm password: <input id="signup-password2"> </div>
-            <br>
-            <button id="signup-button">Sign me up!</button>
-            <br>
-            <div class="smaller">If you are already signed up, <span class="nav-block" id="login2">Log In </span> here.</div>
-        </div>
-
-        <nav class="nav" id="bottom">
-            <ul class="navbar">
-                <li class="nav-bottom-name">
-                    <div class="size-link" >Begin A Puzzle:</div>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=4>4 x 4</div>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=5>5 x 5</a>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=6>6 x 6</div>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=7>7 x 7</div>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=8>8 x 8</a>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=9>9 x 9</div>
-                </li>
-                <li class="nav-bottom">
-                    <div class="size-link" data-size=10>10 x 10</div>
-                </li>
-            </ul>
-        </nav>
-        <div id="lost">
-            Any progress on this puzzle will be lost if you start another puzzle.
+    
+            <div id="login-div" class="center">
+                <div id="login-message" style="color: red;"></div>
+                <br>
+                <div class="subtitle">Log In here to keep track of your scores.</div>
+                <br>
+                <div>username: <input id="login-username"> </div>
+                <br>
+                <div>password: <input id="login-password"> </div>
+                <br>
+                <button id="login-button">Log In</button>
+                <br>
+                <div class="smaller">If you haven't signed up, <span class="nav-block" id="signup2">Sign up </span> here.</div>
+            </div>
+    
+            <div id="signup-div" class="center">
+                <div id="signup-message" style="color: red;"></div>
+                <br>
+                <div class="subtitle">Sign up here to keep track of your scores.</div>
+                <br>
+                <div>username: <input id="signup-username"> </div>
+                <br>
+                <div>password: <input id="signup-password"> </div>
+                <br>
+                <div>confirm password: <input id="signup-password2"> </div>
+                <br>
+                <button id="signup-button">Sign me up!</button>
+                <br>
+                <div class="smaller">If you are already signed up, <span class="nav-block" id="login2">Log In </span> here.</div>
+            </div>
+    
+            <nav class="nav" id="bottom">
+                <ul class="navbar">
+                    <li class="nav-bottom-name">
+                        <div class="size-link" >Begin A Puzzle:</div>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=4>4 x 4</div>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=5>5 x 5</a>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=6>6 x 6</div>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=7>7 x 7</div>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=8>8 x 8</a>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=9>9 x 9</div>
+                    </li>
+                    <li class="nav-bottom">
+                        <div class="size-link" data-size=10>10 x 10</div>
+                    </li>
+                </ul>
+            </nav>
+            <div id="lost">
+                Any progress on this puzzle will be lost if you start another puzzle.
+            </div>
         </div>
     </body>
 </html>
