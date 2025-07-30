@@ -21,8 +21,9 @@ table,th, td {
 }
 #stat-table, th, td {
     font-size: 1.5vw;
-    padding: .7vw;
+    padding: 1.2vw;
 }
+
 .cell .content {
     aspect-ratio: 1 / 1;
   }
@@ -242,8 +243,9 @@ input {
     width: 90%;
 }
 .main {
-  padding: 5%;
+    padding:5%;
 }
+
 @media (max-width: 600px) {
 
     #puzzle-div2 {
@@ -366,7 +368,7 @@ input {
     #tutorial-video{
         width: 100%;
     }
-  .main {
-    padding: 0;
-  }
+    .main {
+        padding: 0;
+    }
 }
