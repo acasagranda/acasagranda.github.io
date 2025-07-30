@@ -557,6 +557,7 @@ function setup_stats() {
     col_part = document.createElement('th');
     col_part.textContent = "High Scores";
     col_part.setAttribute('colspan', '3'); 
+    col_part.style.backgroundColor = "lightgreen";
     row_part.appendChild(col_part);
     tbody.appendChild(row_part);
     row_part = document.createElement('tr');
@@ -604,7 +605,7 @@ function setup_stats() {
                 tablecol.setAttribute('style', 'white-space: nowrap;');
                 tablecol.textContent = stats['high_scorer'][row.toString()][i] + ": " + stats['high_scores'][row.toString()][i];
                 tablerow.appendChild(tablecol);
-                if (stats['high_scorer'][row.toString()] === username) {
+                if (stats['high_scorer'][row.toString()][i] === username) {
                     tablecol.style.color = 'chartreuse';
                 } else {
                     tablecol.style.color = 'black';
