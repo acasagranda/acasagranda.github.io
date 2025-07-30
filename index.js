@@ -664,7 +664,7 @@ function login_button(){
     const pass = document.querySelector('#login-password');
 
     fetch('https://acasagranda.pythonanywhere.com/loginpuzzle', {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // Important: tells the server you're sending JSON
             },
