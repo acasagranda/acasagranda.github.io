@@ -539,6 +539,7 @@ function setup_stats() {
         tablediv = document.querySelector('#stattable-loggedin'); 
     }
     tablediv.innerHTML = "";
+    tablediv.setAttribute('style', 'overflow: auto;')
     const table = document.createElement('table');
     tablediv.appendChild(table);
     table.setAttribute('id','stat-table');
@@ -546,16 +547,34 @@ function setup_stats() {
     table.appendChild(tbody);
     let row_part = document.createElement('tr');
     let col_part = document.createElement('th');
-    col_part.textContent = "Grid Size";
+    col_part.textContent = "";
     row_part.appendChild(col_part);
     if (username != null){
         col_part = document.createElement('th');
-        col_part.textContent = "Puzzles Solved";
+        col_part.textContent = "Puzzles";
         row_part.appendChild(col_part);
     }
     col_part = document.createElement('th');
     col_part.textContent = "High Scores";
+    col_part.setAttribute('colspan', '3'); 
     row_part.appendChild(col_part);
+    tbody.appendChild(row_part);
+    row_part = document.createElement('tr');
+    col_part = document.createElement('th');
+    col_part.setAttribute('style', 'white-space: nowrap;');
+    col_part.textContent = "Grid Size";
+    row_part.appendChild(col_part);
+    if (username != null){
+        col_part = document.createElement('th');
+        col_part.textContent = "Solved";
+        row_part.appendChild(col_part);
+    }
+    for (let i=1; i<=3; i++){
+        col_part = document.createElement('th');
+        col_part.textContent = i;
+        row_part.appendChild(col_part);
+    }
+    
     tbody.appendChild(row_part);
     fetch(`https://acasagranda.pythonanywhere.com/stats`, {
         method: 'POST',
@@ -567,10 +586,11 @@ function setup_stats() {
         }),
     })
     .then(response => response.json())
-    .then(stats => {   
+    .then(stats => {  
         for (let row=4; row<11; row++){
             let tablerow = document.createElement('tr');
             let tablecol = document.createElement('td');
+            tablecol.setAttribute('style', 'white-space: nowrap;');
             tablecol.textContent = row + " x " + row;
             tablerow.appendChild(tablecol);
             if (username != null){
@@ -578,13 +598,17 @@ function setup_stats() {
                 tablecol.textContent = stats['number_solved'][row.toString()]
                 tablerow.appendChild(tablecol);
             }
-            tablecol = document.createElement('td');
-            tablecol.textContent = stats['high_scorer'][row.toString()] + ": " + stats['high_scores'][row.toString()];
-            tablerow.appendChild(tablecol);
-            if (stats['high_scorer'][row.toString()] === username) {
-                tablecol.style.color = 'chartreuse';
-            } else {
-                tablecol.style.color = 'black';
+            for (let i=0; i<3; i++){
+                tablecol = document.createElement('td');
+                tablecol.setAttribute('style', 'padding: 2%;');
+                tablecol.setAttribute('style', 'white-space: nowrap;');
+                tablecol.textContent = stats['high_scorer'][row.toString()][i] + ": " + stats['high_scores'][row.toString()][i];
+                tablerow.appendChild(tablecol);
+                if (stats['high_scorer'][row.toString()] === username) {
+                    tablecol.style.color = 'chartreuse';
+                } else {
+                    tablecol.style.color = 'black';
+                }
             }
             tbody.appendChild(tablerow);
         };
@@ -640,7 +664,7 @@ function login_button(){
     const pass = document.querySelector('#login-password');
 
     fetch('https://acasagranda.pythonanywhere.com/loginpuzzle', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json', // Important: tells the server you're sending JSON
             },
@@ -666,4 +690,3 @@ function login_button(){
             }
         })
 }
-
