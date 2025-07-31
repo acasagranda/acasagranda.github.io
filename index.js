@@ -606,9 +606,9 @@ function setup_stats() {
                 tablecol.textContent = stats['high_scorer'][row.toString()][i] + ": " + stats['high_scores'][row.toString()][i];
                 tablerow.appendChild(tablecol);
                 if (stats['high_scorer'][row.toString()][i] === username) {
-                    tablecol.style.color = 'chartreuse';
+                    tablecol.style.backgroundColor = 'lightgreen';
                 } else {
-                    tablecol.style.color = 'black';
+                    tablecol.style.backgroundColor = 'white';
                 }
             }
             tbody.appendChild(tablerow);
