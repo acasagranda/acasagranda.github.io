@@ -404,6 +404,7 @@ function make_mark(row,col,already_in_move_set=false) {
                     let inside_curr = curr[0].children[0];
                     if (inside_curr.innerHTML !== "N"){
                         curr[0].style.backgroundColor = "lightgreen";
+                        curr[0].style.color = "black";
                     }
                 }
             }
@@ -476,9 +477,9 @@ function check_grid(row,col) {
                     red.add(row + '*' + col);
                     red.add(r1 + '*' + c1);
                     red.add(r2 + '*' + c2);
-                    curr[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
-                    one[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
-                    two[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
+                    curr[0].style.backgroundColor = "rgba(255, 166, 0, 0.2)";
+                    one[0].style.backgroundColor = "rgba(255, 166, 0, 0.2)";
+                    two[0].style.backgroundColor = "rgba(255, 166, 0, 0.2)";
                 }
             }
         }
@@ -706,4 +707,5 @@ function login_button(){
             }
         })
 }
+
 
