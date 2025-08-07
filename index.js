@@ -339,8 +339,10 @@ function setup_grid(restart) {
             inside_cell.innerHTML = "N";
         } else {
             inside_cell.innerHTML = rcm[2];
+            curr[0].style.color = "darkgray";
         }
         curr[0].style.opacity = '1';
+        
         curr[0].addEventListener('mouseenter', () => {
             curr[0].style.cursor = 'not-allowed';
             })
@@ -392,8 +394,19 @@ function make_mark(row,col,already_in_move_set=false) {
 
     // check for win
     if ((red_set.size === 0) && (move_set.size + start_set.length === grid_size * grid_size)){
-            const puzzle_table = document.querySelector('#puzzle-table');
-            puzzle_table.style.backgroundColor = "lightgreen";
+            // const puzzle_table = document.querySelector('#puzzle-table');
+            // puzzle_table.style.backgroundColor = "lightgreen";
+            for (let row=0; row<grid_size; row++) {
+                let r = row.toString();
+                for (let col=0; col<grid_size; col++) {
+                    let c = col.toString();
+                    let curr = document.querySelectorAll(`[data-row="${r}"][data-col="${c}"]`);
+                    let inside_curr = curr[0].children[0];
+                    if (inside_curr.innerHTML !== "N"){
+                        curr[0].style.backgroundColor = "lightgreen";
+                    }
+                }
+            }
             const puzzle_div = document.querySelector('#puzzle-div2');  
             const div1 = document.createElement('div');  
             const con = document.createElement('p');
@@ -446,7 +459,7 @@ function check_grid(row,col) {
     const r = parseInt(row);
     const c = parseInt(col);
     const curr = document.querySelectorAll(`[data-row="${row}"][data-col="${col}"]`);
-    curr[0].style.color = "black";
+    curr[0].style.backgroundColor = "white";
     const inside_curr = curr[0].children[0];
     deltas.forEach(delta => {
         r1 = (r + delta[2]).toString();
@@ -463,9 +476,9 @@ function check_grid(row,col) {
                     red.add(row + '*' + col);
                     red.add(r1 + '*' + c1);
                     red.add(r2 + '*' + c2);
-                    curr[0].style.color = "red";
-                    one[0].style.color = "red";
-                    two[0].style.color = "red";
+                    curr[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
+                    one[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
+                    two[0].style.backgroundColor = "rgba(255, 166, 0, 0.532)";
                 }
             }
         }
@@ -483,7 +496,7 @@ function back_one_move() {
     } else {
         other_move += 'X';
     }
-    // if the same cell wasn't in a previos move set back to N
+    // if the same cell wasn't in a previous move set back to N
     if (!moves.includes(move) && !moves.includes(other_move)) {
         const rc = move.split("*");
         move_set.delete(rc[0] + '*' + rc[1]);
@@ -492,9 +505,10 @@ function back_one_move() {
         inside_curr.innerHTML = "N";
         curr[0].style.opacity = '0';
         curr[0].style.color = "black";
+        curr[0].style.backgroundColor = "white";
         red_set.delete(rc[0] + '*' + rc[1]);
         make_mark(grid_size,grid_size);
-    // otherwise set back to next previos move
+    // otherwise set back to next previous move
     } else {
         let found_move = "";
         for (let i = moves.length - 1; i >= 0; i--) {
@@ -505,6 +519,7 @@ function back_one_move() {
                 const inside_curr = curr[0].children[0];
                 inside_curr.innerHTML = rc[2];
                 curr[0].style.opacity = '1';
+                curr[0].style.backgroundColor = "white";
                 make_mark(rc[0],rc[1],true);
                 break;
             }
@@ -691,3 +706,4 @@ function login_button(){
             }
         })
 }
+
