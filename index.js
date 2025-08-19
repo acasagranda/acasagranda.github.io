@@ -340,6 +340,7 @@ function setup_grid(restart) {
         } else {
             inside_cell.innerHTML = rcm[2];
             curr[0].style.color = "darkgray";
+            curr[0].style.backgroundColor = "white";
         }
         curr[0].style.opacity = '1';
         
@@ -707,5 +708,6 @@ function login_button(){
             }
         })
 }
+
 
 
