@@ -280,7 +280,7 @@ input {
         font-size: 3vw;
     }
     .title {
-        font-size: 10vw;
+        font-size: 5vw;
     }
     #intro-div {
         display: block;
@@ -374,4 +374,5 @@ input {
         padding: 0;
     }
 }
+
 
