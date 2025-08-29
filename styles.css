@@ -3,7 +3,9 @@ html, body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+.center {
+  text-align: center;
+}
 table {
     align-items: center;
     margin-left: auto;
@@ -372,3 +374,4 @@ input {
         padding: 0;
     }
 }
+
